@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bonifacio Portfolio</title>
+  <meta name="description" content="Portfolio of Anne Kelsey Bonifacio, a Computer Science student and Front-End Developer specializing in React, Next.js, and UI/UX design." />
+  <meta name="theme-color" content="#061617" />
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+
+  <!-- Fonts (Google Fonts): Fraunces for headings, Inter for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tells CSS that JavaScript is available (scroll-reveal only hides content when JS works) -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/main.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ===== ICON SPRITE: reused with <use href="#icon-name"> ===== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="m3 7 9 6 9-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.02 1.76 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></symbol>
+    <symbol id="icon-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4V21H3V9.75Zm6.5 0h3.84v1.54h.05c.54-1.01 1.84-2.08 3.79-2.08 4.05 0 4.8 2.67 4.8 6.13V21h-4v-4.9c0-1.17-.02-2.67-1.63-2.67-1.63 0-1.88 1.27-1.88 2.58V21h-4V9.75Z"/></symbol>
+    <symbol id="icon-sparkle" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.8 6.2 5.8 11.2 12 12-6.2.8-11.2 5.8-12 12-.8-6.2-5.8-11.2-12-12C6.2 11.2 11.2 6.2 12 0Z"/></symbol>
+    <symbol id="icon-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></symbol>
+    <symbol id="icon-database" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+    <symbol id="icon-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 17.7 6.3 21l6.3-6.3a4 4 0 0 0 5.1-5.4l-2.6 2.6-2.4-.6-.6-2.4 2.6-2.6Z"/></symbol>
+    <symbol id="icon-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16"/><rect x="8" y="11" width="3" height="6"/><rect x="13" y="7" width="3" height="10"/></symbol>
+    <symbol id="icon-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"/></symbol>
+    <symbol id="icon-table" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/></symbol>
+    <symbol id="icon-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/></symbol>
+    <symbol id="icon-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.6"/></symbol>
+  </svg>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="site-header" id="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a class="nav__brand" href="#home" aria-label="Anne Kelsey Bonifacio, back to top">AKB</a>
+
+      <button class="nav__toggle" id="nav-toggle" type="button"
+              aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+
+      <ul class="nav__menu" id="nav-menu">
+        <li><a class="nav__link" href="#home">Home</a></li> 
+        <li><a class="nav__link" href="#skills">Skills</a></li>
+        <li><a class="nav__link" href="#projects">Projects</a></li>
+        <li><a class="nav__link nav__link--cta" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <svg class="hero__star hero__star--one" aria-hidden="true" focusable="false"><use href="#icon-sparkle"/></svg>
+      <svg class="hero__star hero__star--two" aria-hidden="true" focusable="false"><use href="#icon-sparkle"/></svg>
+
+      <div class="container hero__inner">
+        <!-- LEFT: intro, buttons, stats -->
+        <div class="hero__main">
+        <img class="hero__avatar" src="assets/images/profile.png" width="72" height="72"
+             alt="Portrait of Anne Kelsey Bonifacio" />
+
+        <h1 class="hero__title" id="hero-title">
+          Hi, I'm <span class="text-accent">Anne Kelsey Bonifacio</span>
+        </h1>
+        <!-- Role + social links on one line -->
+        <div class="hero__role-row">
+          <p class="hero__role">Front-End Developer</p>
+          <ul class="hero__social">
+            <li><a href="https://github.com/kilsej" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in a new tab)">
+              <svg aria-hidden="true" focusable="false"><use href="#icon-github"/></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/anne-kelsey-bonifacio" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in a new tab)">
+              <svg aria-hidden="true" focusable="false"><use href="#icon-linkedin"/></svg></a></li>
+          </ul>
+        </div>
+        <p class="hero__intro">
+          I build thoughtful digital experiences through front-end development and UI/UX design.
+          A Computer Science student specializing in Machine Learning, with experience developing
+          responsive web applications, financial management systems, and data-driven dashboards.
+        </p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#projects">View My Projects
+            <svg class="btn__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="assets/documents/Anne-Kelsey-Bonifacio-Resume.pdf" target="_blank" rel="noopener noreferrer">View Resume</a>
+        </div>
+
+        <!-- Quick facts, all taken from the resume -->
+        <ul class="stats" aria-label="Highlights">
+        </ul>
+        </div><!-- /hero__main -->
+
+        <!-- RIGHT: About me (the nav "About" link scrolls here) -->
+        <div class="hero__about" id="about">
+          <h2 class="hero__about-title">My Focus</h2>
+
+          <ul class="focus">
+            <li class="focus__item">
+              <h3 class="focus__title">Front-End Development</h3>
+              <p>Building responsive and functional web interfaces using React, Next.js, HTML, CSS, and JavaScript.</p>
+            </li>
+            <li class="focus__item">
+              <h3 class="focus__title">UI/UX Design</h3>
+              <p>Creating intuitive layouts and user-friendly experiences with attention to usability and visual consistency.</p>
+            </li>
+            <li class="focus__item">
+              <h3 class="focus__title">Data &amp; AI Integration</h3>
+              <p>Developing data-driven dashboards and integrating AI-powered features into applications.</p>
+            </li>
+          </ul>
+
+          <!-- Short academic identifier (full details can live in a separate section later) -->
+          <p class="hero__edu">
+            <strong>BS Computer Science · Machine Learning</strong><br />
+            Mapúa Malayan Colleges Laguna · Aug 2023 – Expected 2027
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SCROLLING TAG STRIP (decorative; pure CSS animation) ===== -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>Front-End Development</span><span>UI/UX Design</span><span>React.js</span><span>Next.js</span>
+        <span>Responsive Design</span><span>Software Development</span><span>Machine Learning</span><span>Prompt Engineering</span>
+        <span>Web Development</span><span>Data Visualization</span><span>Application Development</span>
+        <!-- Duplicate set so the loop is seamless (keep both sets identical) -->
+        <span>Front-End Development</span><span>UI/UX Design</span><span>React.js</span><span>Next.js</span>
+        <span>Responsive Design</span><span>Software Development</span><span>Machine Learning</span><span>Prompt Engineering</span>
+        <span>Web Development</span><span>Data Visualization</span><span>Application Development</span>
+      </div>
+    </div>
+
+    <!-- ===== TECHNICAL SKILLS (every item comes from the resume) ===== -->
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="section__header" data-reveal>
+          <p class="eyebrow"></p>
+          <h2 class="section__title" id="skills-title">Technical skills</h2>
+        </header>
+
+        <div class="skills-grid">
+          <article class="card skill-card" data-reveal>
+            <h3 class="card__title skill-card__title"><svg class="skill-card__icon" aria-hidden="true" focusable="false"><use href="#icon-code"/></svg>Programming Languages</h3>
+            <ul class="chip-list"><li class="chip">C#</li><li class="chip">Python</li><li class="chip">C++</li><li class="chip">Kotlin</li><li class="chip">JavaScript</li></ul>
+          </article>
+
+          <article class="card skill-card" data-reveal>
+            <h3 class="card__title skill-card__title"><svg class="skill-card__icon" aria-hidden="true" focusable="false"><use href="#icon-globe"/></svg>Front-End Development</h3>
+            <!-- JavaScript removed: it is already under Programming Languages -->
+            <ul class="chip-list"><li class="chip">HTML</li><li class="chip">CSS</li><li class="chip">Responsive Design</li><li class="chip">UI Testing</li></ul>
+          </article>
+
+          <article class="card skill-card" data-reveal>
+            <h3 class="card__title skill-card__title"><svg class="skill-card__icon" aria-hidden="true" focusable="false"><use href="#icon-layers"/></svg>Frameworks &amp; Libraries</h3>
+            <ul class="chip-list"><li class="chip">React.js</li><li class="chip">Next.js</li></ul>
+          </article>
+
+          <article class="card skill-card" data-reveal>
+            <h3 class="card__title skill-card__title"><svg class="skill-card__icon" aria-hidden="true" focusable="false"><use href="#icon-database"/></svg>Backend &amp; Databases</h3>
+            <!-- Add more chips here ONLY for tech you have hands-on experience with, e.g. <li class="chip">REST APIs</li> -->
+            <ul class="chip-list"><li class="chip">Supabase</li><li class="chip">Google Gemini API</li></ul>
+          </article>
+
+          <article class="card skill-card" data-reveal>
+            <h3 class="card__title skill-card__title"><svg class="skill-card__icon" aria-hidden="true" focusable="false"><use href="#icon-wrench"/></svg>Tools &amp; Platforms</h3>
+            <ul class="chip-list"><li class="chip">Git</li><li class="chip">GitHub</li><li class="chip">Visual Studio Code</li><li class="chip">Android Studio</li><li class="chip">Figma</li><li class="chip">Google Colab</li></ul>
+          </article>
+
+          <article class="card skill-card" data-reveal>
+            <h3 class="card__title skill-card__title"><svg class="skill-card__icon" aria-hidden="true" focusable="false"><use href="#icon-chart"/></svg>Data &amp; Development Practices</h3>
+            <ul class="chip-list">
+              <li class="chip">Machine Learning</li><li class="chip">Data Preprocessing</li><li class="chip">Data Visualization</li>
+              <li class="chip">Prompt Engineering</li><li class="chip">Agile/Scrum</li><li class="chip">Debugging</li><li class="chip">Version Control</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+        <!-- ===== FEATURED PROJECTS (cards are generated by js/main.js from the `projects` array) ===== -->
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <header class="section__header" data-reveal>
+          <p class="eyebrow"></p>
+          <h2 class="section__title" id="projects-title">Featured Projects</h2>
+          <p class="section__lead">A collection of academic and professional projects I'm proud of.</p>
+        </header>
+
+        <div class="projects-grid" id="projects-grid"></div>
+        <noscript><p class="section__lead">Please enable JavaScript to view the project cards.</p></noscript>
+      </div>
+    </section>
+
+    <!-- ===== INTERNSHIP PROJECTS (blank for now: fill in once the internship starts) ===== -->
+    <section class="section" id="internship" aria-labelledby="internship-title">
+      <!-- "Coming soon" layer: blurs this section while it is on screen.
+           When the internship content is ready, delete this <div>. -->
+      <div class="coming-soon">
+        <span class="coming-soon__label">Coming soon</span>
+      </div>
+
+      <div class="container">
+        <header class="section__header" data-reveal>
+          <p class="eyebrow"></p>
+          <h2 class="section__title" id="internship-title">Internship Work</h2>
+          <p class="section__lead">Projects from my internship at AMS Environmental Management Corp. (December 2026 – March 2027) will be featured here.</p>
+        </header>
+
+        <!-- Tab bar -->
+        <div class="tabs" role="tablist" aria-label="Internship sections" data-reveal>
+          <button class="tabs__tab is-active" type="button" role="tab" id="tab-overview" aria-selected="true" aria-controls="panel-overview">Overview</button>
+          <button class="tabs__tab" type="button" role="tab" id="tab-tasks" aria-selected="false" aria-controls="panel-tasks" tabindex="-1">Tasks</button>
+          <button class="tabs__tab" type="button" role="tab" id="tab-report" aria-selected="false" aria-controls="panel-report" tabindex="-1">Report</button>
+        </div>
+
+        <!-- Hidden panels: each one shows when its tab is clicked. Replace the placeholder text later. -->
+        <div class="tabs__panel" role="tabpanel" id="panel-tasks" aria-labelledby="tab-tasks" tabindex="0" hidden>
+          <article class="intern-card intern-card--main">
+            <h3 class="intern-card__title"><svg class="intern-card__star" aria-hidden="true" focusable="false"><use href="#icon-sparkle"/></svg>Tasks</h3>
+            <p class="intern-card__sub">WHAT I WORKED ON</p>
+            <p class="intern-card__empty">Tasks coming soon</p>
+          </article>
+        </div>
+
+        <div class="tabs__panel" role="tabpanel" id="panel-skills" aria-labelledby="tab-skills" tabindex="0" hidden>
+          <article class="intern-card intern-card--main">
+            <h3 class="intern-card__title"><svg class="intern-card__star" aria-hidden="true" focusable="false"><use href="#icon-sparkle"/></svg>Skills</h3>
+            <p class="intern-card__sub">WHAT I USED AND LEARNED</p>
+            <p class="intern-card__empty">Skills coming soon</p>
+          </article>
+        </div>
+
+        <div class="tabs__panel" role="tabpanel" id="panel-certificates" aria-labelledby="tab-certificates" tabindex="0" hidden>
+          <article class="intern-card intern-card--main">
+            <h3 class="intern-card__title"><svg class="intern-card__star" aria-hidden="true" focusable="false"><use href="#icon-sparkle"/></svg>Certificates</h3>
+            <p class="intern-card__sub">CERTIFICATES EARNED</p>
+            <p class="intern-card__empty">Certificates coming soon</p>
+          </article>
+        </div>
+
+        <div class="tabs__panel" role="tabpanel" id="panel-report" aria-labelledby="tab-report" tabindex="0" hidden>
+          <article class="intern-card intern-card--main">
+            <h3 class="intern-card__title"><svg class="intern-card__star" aria-hidden="true" focusable="false"><use href="#icon-sparkle"/></svg>Report</h3>
+            <p class="intern-card__sub">INTERNSHIP REPORT</p>
+            <p class="intern-card__empty">Report coming soon</p>
+          </article>
+        </div>
+
+        <!-- Overview panel (the two-column layout you already have) -->
+        <div class="intern tabs__panel" role="tabpanel" id="panel-overview" aria-labelledby="tab-overview" tabindex="0">
+          <!-- Left column: two small cards -->
+          <div class="intern__side">
+            <article class="intern-card" data-reveal>
+              <h3 class="intern-card__title">
+                <svg class="intern-card__star" aria-hidden="true" focusable="false"><use href="#icon-sparkle"/></svg>My Tech Stack
+              </h3>
+              <p class="intern-card__sub">Technologies will be added here</p>
+              <!-- Six empty slots for tech icons (decorative placeholders) -->
+              <ul class="intern__tiles" aria-hidden="true">
+                <li class="intern__tile"></li>
+                <li class="intern__tile"></li>
+                <li class="intern__tile"></li>
+                <li class="intern__tile"></li>
+                <li class="intern__tile"></li>
+                <li class="intern__tile"></li>
+              </ul>
+            </article>
+
+            <article class="intern-card intern-card--accent" data-reveal>
+              <p>Highlight coming soon</p>
+            </article>
+          </div>
+
+          <!-- Right column: the main project card -->
+          <article class="intern-card intern-card--main" data-reveal>
+            <h3 class="intern-card__title">
+              <svg class="intern-card__star" aria-hidden="true" focusable="false"><use href="#icon-sparkle"/></svg>My Internship
+            </h3>
+            <p class="intern-card__sub">NAME OF PROJECT</p>
+            <p class="intern-card__empty">Project details coming soon</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="cta-banner" data-reveal>
+          <div>
+            <h2 class="cta-banner__title" id="contact-title">Have a project in mind?</h2>
+            <p class="cta-banner__subtitle">Let's create something meaningful together.</p>
+            <p>I'm always interested in connecting with people, exploring opportunities, and working on ideas that make an impact. Feel free to reach out!</p>
+          </div>
+          <!-- Scrolls to the form, so it doesn't duplicate the email card below -->
+          <a class="btn btn--dark" href="#contact-form">Send a message
+            <svg class="btn__icon" aria-hidden="true" focusable="false"><use href="#icon-mail"/></svg>
+          </a>
+        </div>
+
+        <div class="contact">
+          <ul class="contact__links" data-reveal>
+            <li>
+              <a class="contact__link" href="mailto:bonifacio.kelsey09@gmail.com">
+                <svg class="contact__icon" aria-hidden="true" focusable="false"><use href="#icon-mail"/></svg>
+                <span class="contact__text">
+                  <strong>bonifacio.kelsey09@gmail.com</strong>
+                  <small>Send me an email</small>
+                </span>
+                <svg class="contact__arrow" aria-hidden="true" focusable="false"><use href="#icon-external"/></svg>
+              </a>
+            </li>
+            <li>
+              <a class="contact__link" href="https://www.linkedin.com/in/anne-kelsey-bonifacio" target="_blank" rel="noopener noreferrer">
+                <svg class="contact__icon" aria-hidden="true" focusable="false"><use href="#icon-linkedin"/></svg>
+                <span class="contact__text">
+                  <strong>LinkedIn</strong>
+                  <small>Connect professionally</small>
+                </span>
+                <svg class="contact__arrow" aria-hidden="true" focusable="false"><use href="#icon-external"/></svg>
+                <span class="visually-hidden"> (opens in a new tab)</span>
+              </a>
+            </li>
+            <li>
+              <a class="contact__link" href="https://github.com/kilsej" target="_blank" rel="noopener noreferrer">
+                <svg class="contact__icon" aria-hidden="true" focusable="false"><use href="#icon-github"/></svg>
+                <span class="contact__text">
+                  <strong>GitHub</strong>
+                  <small>Explore my repositories</small>
+                </span>
+                <svg class="contact__arrow" aria-hidden="true" focusable="false"><use href="#icon-external"/></svg>
+                <span class="visually-hidden"> (opens in a new tab)</span>
+              </a>
+            </li>
+          </ul>
+
+          <!-- Right column: contact form -->
+          <form class="form" id="contact-form" action="https://formspree.io/f/meaglkez" method="POST" novalidate data-reveal>
+            <div class="form__group">
+              <label for="name">Full Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="name" name="name" autocomplete="name" placeholder="Enter your name" required aria-describedby="name-error" />
+              <p class="form__error" id="name-error" role="alert"></p>
+            </div>
+
+            <div class="form__group">
+              <label for="email">Email Address <span aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required aria-describedby="email-error" />
+              <p class="form__error" id="email-error" role="alert"></p>
+            </div>
+
+            <div class="form__group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="_subject" placeholder="What's this regarding?" />
+            </div>
+
+            <div class="form__group">
+              <label for="message">Message <span aria-hidden="true">*</span></label>
+              <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required aria-describedby="message-error"></textarea>
+              <p class="form__error" id="message-error" role="alert"></p>
+            </div>
+
+            <!-- Honeypot field to block spam bots -->
+            <input type="text" name="_gotcha" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+            <button class="btn btn--primary" type="submit" id="form-submit">
+              Send message
+              <svg class="btn__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow"/></svg>
+            </button>
+
+            <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div><!-- /contact -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p>© <span id="year">2026</span> Anne Kelsey Bonifacio. All rights reserved.</p>
+      <ul class="site-footer__links">
+        <li><a href="https://github.com/kilsej" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li><a href="https://www.linkedin.com/in/anne-kelsey-bonifacio" target="_blank" rel="noopener noreferrer">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li><a href="#home">Back to top</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
