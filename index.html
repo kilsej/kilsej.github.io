@@ -5,15 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bonifacio Portfolio</title>
   <meta name="description" content="Portfolio of Anne Kelsey Bonifacio, a Computer Science student and Front-End Developer specializing in React, Next.js, and UI/UX design." />
-  <meta name="theme-color" content="#061617" />
+  <meta name="theme-color" content="#F0E5DB" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Anne Kelsey Bonifacio | Front-End Developer" />
+  <meta property="og:description" content="Computer Science student and Front-End Developer specializing in React, Next.js, and UI/UX design." />
+  <meta property="og:url" content="https://kilsej.github.io/" />
+  <meta property="og:image" content="https://kilsej.github.io/assets/images/og-preview.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Preview of Anne Kelsey Bonifacio's portfolio home page" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
-
-  <!-- Fonts (Google Fonts): Fraunces for headings, Inter for body text -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <!-- Tells CSS that JavaScript is available (scroll-reveal only hides content when JS works) -->
   <script>document.documentElement.classList.add('js');</script>
 
   <link rel="stylesheet" href="css/style.css" />
@@ -23,7 +29,6 @@
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <!-- ===== ICON SPRITE: reused with <use href="#icon-name"> ===== -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="m3 7 9 6 9-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -42,7 +47,7 @@
     <symbol id="icon-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.6"/></symbol>
   </svg>
 
-  <!-- ===== NAVBAR ===== -->
+  <!--navbar-->
   <header class="site-header" id="site-header">
     <nav class="nav" aria-label="Primary">
       <a class="nav__brand" href="#home" aria-label="Anne Kelsey Bonifacio, back to top">AKB</a>
@@ -65,13 +70,12 @@
 
   <main id="main">
 
-    <!-- ===== HERO ===== -->
+    <!--hero-->
     <section class="hero" id="home" aria-labelledby="hero-title">
       <svg class="hero__star hero__star--one" aria-hidden="true" focusable="false"><use href="#icon-sparkle"/></svg>
       <svg class="hero__star hero__star--two" aria-hidden="true" focusable="false"><use href="#icon-sparkle"/></svg>
 
       <div class="container hero__inner">
-        <!-- LEFT: intro, buttons, stats -->
         <div class="hero__main">
         <img class="hero__avatar" src="assets/images/profile.png" width="72" height="72"
              alt="Portrait of Anne Kelsey Bonifacio" />
@@ -79,7 +83,6 @@
         <h1 class="hero__title" id="hero-title">
           Hi, I'm <span class="text-accent">Anne Kelsey Bonifacio</span>
         </h1>
-        <!-- Role + social links on one line -->
         <div class="hero__role-row">
           <p class="hero__role">Front-End Developer</p>
           <ul class="hero__social">
@@ -106,12 +109,9 @@
           </a>
         </div>
 
-        <!-- Quick facts, all taken from the resume -->
         <ul class="stats" aria-label="Highlights">
         </ul>
-        </div><!-- /hero__main -->
-
-        <!-- RIGHT: About me (the nav "About" link scrolls here) -->
+        </div>
         <div class="hero__about" id="about">
           <h2 class="hero__about-title">My Focus</h2>
 
@@ -130,7 +130,6 @@
             </li>
           </ul>
 
-          <!-- Short academic identifier (full details can live in a separate section later) -->
           <p class="hero__edu">
             <strong>BS Computer Science · Machine Learning</strong><br />
             Mapúa Malayan Colleges Laguna · Aug 2023 – Expected 2027
@@ -139,20 +138,17 @@
       </div>
     </section>
 
-    <!-- ===== SCROLLING TAG STRIP (decorative; pure CSS animation) ===== -->
     <div class="ticker" aria-hidden="true">
       <div class="ticker__track">
         <span>Front-End Development</span><span>UI/UX Design</span><span>React.js</span><span>Next.js</span>
         <span>Responsive Design</span><span>Software Development</span><span>Machine Learning</span><span>Prompt Engineering</span>
         <span>Web Development</span><span>Data Visualization</span><span>Application Development</span>
-        <!-- Duplicate set so the loop is seamless (keep both sets identical) -->
         <span>Front-End Development</span><span>UI/UX Design</span><span>React.js</span><span>Next.js</span>
         <span>Responsive Design</span><span>Software Development</span><span>Machine Learning</span><span>Prompt Engineering</span>
         <span>Web Development</span><span>Data Visualization</span><span>Application Development</span>
       </div>
     </div>
 
-    <!-- ===== TECHNICAL SKILLS (every item comes from the resume) ===== -->
     <section class="section" id="skills" aria-labelledby="skills-title">
       <div class="container">
         <header class="section__header" data-reveal>
@@ -168,7 +164,6 @@
 
           <article class="card skill-card" data-reveal>
             <h3 class="card__title skill-card__title"><svg class="skill-card__icon" aria-hidden="true" focusable="false"><use href="#icon-globe"/></svg>Front-End Development</h3>
-            <!-- JavaScript removed: it is already under Programming Languages -->
             <ul class="chip-list"><li class="chip">HTML</li><li class="chip">CSS</li><li class="chip">Responsive Design</li><li class="chip">UI Testing</li></ul>
           </article>
 
@@ -179,7 +174,6 @@
 
           <article class="card skill-card" data-reveal>
             <h3 class="card__title skill-card__title"><svg class="skill-card__icon" aria-hidden="true" focusable="false"><use href="#icon-database"/></svg>Backend &amp; Databases</h3>
-            <!-- Add more chips here ONLY for tech you have hands-on experience with, e.g. <li class="chip">REST APIs</li> -->
             <ul class="chip-list"><li class="chip">Supabase</li><li class="chip">Google Gemini API</li></ul>
           </article>
 
@@ -199,7 +193,6 @@
       </div>
     </section>
 
-        <!-- ===== FEATURED PROJECTS (cards are generated by js/main.js from the `projects` array) ===== -->
     <section class="section" id="projects" aria-labelledby="projects-title">
       <div class="container">
         <header class="section__header" data-reveal>
@@ -213,10 +206,7 @@
       </div>
     </section>
 
-    <!-- ===== INTERNSHIP PROJECTS (blank for now: fill in once the internship starts) ===== -->
     <section class="section" id="internship" aria-labelledby="internship-title">
-      <!-- "Coming soon" layer: blurs this section while it is on screen.
-           When the internship content is ready, delete this <div>. -->
       <div class="coming-soon">
         <span class="coming-soon__label">Coming soon</span>
       </div>
@@ -228,14 +218,12 @@
           <p class="section__lead">Projects from my internship at AMS Environmental Management Corp. (December 2026 – March 2027) will be featured here.</p>
         </header>
 
-        <!-- Tab bar -->
         <div class="tabs" role="tablist" aria-label="Internship sections" data-reveal>
           <button class="tabs__tab is-active" type="button" role="tab" id="tab-overview" aria-selected="true" aria-controls="panel-overview">Overview</button>
           <button class="tabs__tab" type="button" role="tab" id="tab-tasks" aria-selected="false" aria-controls="panel-tasks" tabindex="-1">Tasks</button>
           <button class="tabs__tab" type="button" role="tab" id="tab-report" aria-selected="false" aria-controls="panel-report" tabindex="-1">Report</button>
         </div>
 
-        <!-- Hidden panels: each one shows when its tab is clicked. Replace the placeholder text later. -->
         <div class="tabs__panel" role="tabpanel" id="panel-tasks" aria-labelledby="tab-tasks" tabindex="0" hidden>
           <article class="intern-card intern-card--main">
             <h3 class="intern-card__title"><svg class="intern-card__star" aria-hidden="true" focusable="false"><use href="#icon-sparkle"/></svg>Tasks</h3>
@@ -268,16 +256,13 @@
           </article>
         </div>
 
-        <!-- Overview panel (the two-column layout you already have) -->
         <div class="intern tabs__panel" role="tabpanel" id="panel-overview" aria-labelledby="tab-overview" tabindex="0">
-          <!-- Left column: two small cards -->
           <div class="intern__side">
             <article class="intern-card" data-reveal>
               <h3 class="intern-card__title">
                 <svg class="intern-card__star" aria-hidden="true" focusable="false"><use href="#icon-sparkle"/></svg>My Tech Stack
               </h3>
               <p class="intern-card__sub">Technologies will be added here</p>
-              <!-- Six empty slots for tech icons (decorative placeholders) -->
               <ul class="intern__tiles" aria-hidden="true">
                 <li class="intern__tile"></li>
                 <li class="intern__tile"></li>
@@ -293,7 +278,6 @@
             </article>
           </div>
 
-          <!-- Right column: the main project card -->
           <article class="intern-card intern-card--main" data-reveal>
             <h3 class="intern-card__title">
               <svg class="intern-card__star" aria-hidden="true" focusable="false"><use href="#icon-sparkle"/></svg>My Internship
@@ -305,7 +289,6 @@
       </div>
     </section>
 
-    <!-- ===== CONTACT ===== -->
     <section class="section" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="cta-banner" data-reveal>
@@ -314,7 +297,6 @@
             <p class="cta-banner__subtitle">Let's create something meaningful together.</p>
             <p>I'm always interested in connecting with people, exploring opportunities, and working on ideas that make an impact. Feel free to reach out!</p>
           </div>
-          <!-- Scrolls to the form, so it doesn't duplicate the email card below -->
           <a class="btn btn--dark" href="#contact-form">Send a message
             <svg class="btn__icon" aria-hidden="true" focusable="false"><use href="#icon-mail"/></svg>
           </a>
@@ -356,7 +338,6 @@
             </li>
           </ul>
 
-          <!-- Right column: contact form -->
           <form class="form" id="contact-form" action="https://formspree.io/f/meaglkez" method="POST" novalidate data-reveal>
             <div class="form__group">
               <label for="name">Full Name <span aria-hidden="true">*</span></label>
@@ -381,7 +362,6 @@
               <p class="form__error" id="message-error" role="alert"></p>
             </div>
 
-            <!-- Honeypot field to block spam bots -->
             <input type="text" name="_gotcha" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
             <button class="btn btn--primary" type="submit" id="form-submit">
@@ -391,13 +371,12 @@
 
             <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
           </form>
-        </div><!-- /contact -->
+        </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ===== FOOTER ===== -->
   <footer class="site-footer">
     <div class="container site-footer__inner">
       <p>© <span id="year">2026</span> Anne Kelsey Bonifacio. All rights reserved.</p>

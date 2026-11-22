@@ -1,58 +1,5 @@
-/* ==========================================================================
-   main.js: Anne Kelsey Bonifacio's portfolio
-   Sections:
-     1. Project data  (edit this to add, remove, or change projects)
-     2. Settings
-     3. Small helper functions
-     4. Project card rendering
-     5. Navigation (mobile menu, scrolled state, active link)
-     6. Scroll-reveal animations
-     7. Contact form (validation + Formspree)
-     8. Footer year
-     9. Start everything
-   ========================================================================== */
 'use strict';
 
-/* ==========================================================================
-   1. PROJECT DATA
-   To add a project: copy one { ... } block, paste it inside the array
-   (don't forget the comma between blocks), and edit the values.
-   To remove one: delete its { ... } block.
-
-   Fields:
-     title        Project name
-     type         Small label above the title (e.g. "Thesis · 2025 – Oct 2026")
-     description  Short summary (1-2 sentences)
-     role         What YOU did
-     tech         List of technologies, shown as small tags
-     image        Path to a screenshot, e.g. 'assets/images/my-project.jpg'
-                  Leave '' to show a clean placeholder.
-     imageAlt     Describe the screenshot for screen readers
-                  (if left '', "Preview of <title>" is used)
-     github       Full URL to the GitHub repo, or ''
-     demo         Full URL to the live demo, or ''
-   ========================================================================== */
-/* ==========================================================================
-   1. PROJECT DATA
-   To add a project: copy one { ... } block, paste it inside the array
-   (don't forget the comma between blocks), and edit the values.
-   To remove one: delete its { ... } block.
-
-   Fields:
-     title        Project name
-     meta         Small label above the title (e.g. "AMS Environmental · 2026")
-     description  Short summary (1-2 sentences)
-     highlights   Up to 3 short results shown as a checklist. Use [] to hide it.
-     role         What YOU did
-     tech         List of technologies, shown as small tags
-     device       'browser' (default) or 'phone': the style of the mockup frame
-     image        Path to a screenshot, e.g. 'assets/images/my-project.jpg'
-                  Leave '' to show a clean placeholder.
-     imageAlt     Describe the screenshot for screen readers
-                  (if left '', "Preview of <title>" is used)
-     github       Full URL to the GitHub repo, or ''
-     demo         Full URL to the live demo, or ''
-   ========================================================================== */
 const PROJECTS = [
   {
     title: 'Parkly',
@@ -64,7 +11,7 @@ const PROJECTS = [
       'Guard/Admin Module',
       'QR Code & Vehicle Registration Module'
     ],
-    role: '', // add your role here later, e.g. 'Front-end developer: built the app screens'. Leave '' to hide the line.
+    role: '', 
     tech: ['Supabase API', 'Supabase PostgREST API', 'Supabase Storage API'],
     device: 'phone',
     image: 'assets/images/Parkly.png',
@@ -101,15 +48,57 @@ const PROJECTS = [
       'Activity logs for admin actions'
     ],
     role: 'Built the Admin and Resident login pages, the RBAC system where only the SuperAdmin can create and assign tasks to other admins, and the activity logs that record each admin’s actions.',
-    tech: [], // add the technologies you used, e.g. ['React', 'Supabase']. Leave [] to show none.
+    tech: [], 
     device: 'browser',
-    image: 'assets/images/carltonAdminLogin.png',            // shown on the collapsed tile
+    image: 'assets/images/carltonAdminLogin.png',         
     imageAlt: 'Screenshot of the Carlton Residence admin login page',
-    extraImages: [                                           // only shown when the card is expanded
+    extraImages: [                                       
       { src: 'assets/images/carltonActivityLogs.png', alt: 'Screenshot of the admin activity logs page' }
     ],
     github: '',
     demo: ''
+  },
+  {
+    title: 'AMS Milestone',
+    meta: 'Informational Website',
+    description:
+      'An informational website presenting the history and projects of AMS Environmental Management Corp. and Milestone EIMC.',
+    highlights: [
+      'Multimedia carousel and custom image/video gallery',
+      'Expandable accordions for organized content',
+      'Responsive layouts built with CSS Grid'
+    ],
+    role: 'Front-end developer: responsible for the front-end development of the entire website.',
+    tech: ['JavaScript', 'CSS Grid', 'Responsive Design'],
+    device: 'browser',
+    image: 'assets/images/amsmilestone.png',                       
+    imageAlt: 'Screenshot of the AMS Milestone website',
+    extraImages: [                                         
+
+    ],
+    github: '',
+    demo: 'https://amsmilestone.com/'
+  },
+  {
+    title: 'O&M360 Website',
+    meta: 'Informational Website',
+    description:
+      'An informational website introducing the O&M360 app by AMS Milestone, including a pricing page that showcases the Trial, Plus, and Professional tiers.',
+    highlights: [
+      'Home page introducing the O&M360 app',
+      'Pricing page with Trial, Plus, and Professional tiers',
+      'Responsive on desktop, tablet, and mobile'
+    ],
+    role: 'Front-end developer: responsible for the front-end development of the O&M360 website.',
+    tech: ['Next.js', 'Responsive Design'],
+    device: 'browser',
+    image: 'assets/images/onm360home.png',
+    imageAlt: 'Screenshot of the O&M360 website home page',
+    extraImages: [
+      { src: 'assets/images/onm360prices.png', alt: 'Screenshot of the O&M360 pricing page showing the Trial, Plus, and Professional tiers' }
+    ],
+    github: '',
+    demo: 'https://om360app.com/'
   },
   {
     title: 'Lucky Outlaws',
@@ -133,22 +122,12 @@ const PROJECTS = [
   }
 ];
 
-/* ==========================================================================
-   2. SETTINGS
-   ========================================================================== */
 const CONFIG = {
-  // true  = cards show greyed-out "GitHub" / "Live demo" placeholders when a link is empty
-  // false = empty links are simply hidden (use this once your site is final)
   showLinkPlaceholders: true
 };
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* ==========================================================================
-   3. SMALL HELPER FUNCTIONS
-   ========================================================================== */
-
-/** Create an HTML element: createElement('p', { className: 'x', text: 'Hi', attrs: { id: 'y' } }) */
 function createElement(tag, { className = '', text = '', attrs = {} } = {}, children = []) {
   const node = document.createElement(tag);
   if (className) node.className = className;
@@ -158,7 +137,6 @@ function createElement(tag, { className = '', text = '', attrs = {} } = {}, chil
   return node;
 }
 
-/** Create an SVG icon that references a symbol in the sprite at the top of index.html */
 function createIcon(name) {
   const NS = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(NS, 'svg');
@@ -170,17 +148,11 @@ function createIcon(name) {
   return svg;
 }
 
-/* ==========================================================================
-   4. PROJECT CARD RENDERING
-   ========================================================================== */
-
-/** Build the device mockup (browser window or phone) with the screenshot or a placeholder */
 function createProjectVisual(project) {
   const device = project.device === 'phone' ? 'phone' : 'browser';
   const visual = createElement('div', { className: `project-card__visual project-card__visual--${device}` });
   const frame = createElement('div', { className: `device device--${device}` });
 
-  // Browser windows get a top bar with three dots
   if (device === 'browser') {
     frame.append(
       createElement('div', { className: 'device__bar', attrs: { 'aria-hidden': 'true' } }, [
@@ -208,7 +180,6 @@ function createProjectVisual(project) {
         height: device === 'phone' ? '630' : '400'
       }
     });
-    // If the image file is missing or misspelled, fall back to the placeholder instead of a broken image
     img.addEventListener('error', showPlaceholder);
     screen.append(img);
   }
@@ -218,7 +189,6 @@ function createProjectVisual(project) {
   return visual;
 }
 
-/** Build one button (Live demo or GitHub). Returns null when hidden. */
 function createProjectLink({ label, url, variant, icon }) {
   if (url) {
     return createElement(
@@ -243,7 +213,6 @@ function createProjectLink({ label, url, variant, icon }) {
   );
 }
 
-/** Build a complete project card */
 function createProjectCard(project) {
   const card = createElement('article', { className: 'project-card', attrs: { 'data-reveal': '' } });
   const content = createElement('div', { className: 'project-card__content' });
@@ -254,7 +223,6 @@ function createProjectCard(project) {
     createElement('p', { className: 'project-card__desc', text: project.description })
   );
 
-  // Checklist of results (hidden when the array is empty)
   if (project.highlights && project.highlights.length > 0) {
     content.append(
       createElement(
@@ -267,7 +235,6 @@ function createProjectCard(project) {
     );
   }
 
-  // Role line (hidden when the role is left empty)
   if (project.role) {
     content.append(
       createElement('p', { className: 'project-card__role' }, [
@@ -285,7 +252,6 @@ function createProjectCard(project) {
     )
   );
 
-  // Buttons
   const actions = createElement('div', { className: 'project-card__actions' });
   [
     createProjectLink({ label: 'Live demo', url: project.demo, variant: 'primary', icon: 'arrow' }),
@@ -299,12 +265,9 @@ function createProjectCard(project) {
   return card;
 }
 
-/* ----- Collapsed tile (interface + name only) and the expanded overlay ----- */
+let activeOverlay = null;   
+let lastTrigger = null;     
 
-let activeOverlay = null;   // the overlay currently open (or null)
-let lastTrigger = null;     // the tile that opened it, so focus can return there
-
-/** Small tile shown in the grid: just the interface and the project name */
 function createProjectTile(project) {
   const tile = createElement('article', {
     className: 'project-tile',
@@ -337,16 +300,14 @@ function createProjectTile(project) {
   return tile;
 }
 
-/** Open the full card in an overlay (it floats above the page, so nothing else moves) */
 function openProject(project, trigger) {
   if (activeOverlay) return;
 
   const card = createProjectCard(project);
-  card.removeAttribute('data-reveal');            // the scroll-reveal would keep it invisible
+  card.removeAttribute('data-reveal');           
   card.classList.add('project-card--expanded');
   card.setAttribute('tabindex', '-1');
 
-  // Extra screenshots (project.extraImages) appear only in the expanded view, stacked under the main one
   if (project.extraImages && project.extraImages.length > 0) {
     const visual = card.querySelector('.project-card__visual');
     project.extraImages.forEach((extra) => {
@@ -364,7 +325,6 @@ function openProject(project, trigger) {
     [card]
   );
 
-  // A click on the card or the dark backdrop closes it (links inside still work)
   overlay.addEventListener('click', (event) => {
     if (event.target.closest('a')) return;
     closeProject();
@@ -380,7 +340,6 @@ function openProject(project, trigger) {
   document.addEventListener('keydown', handleOverlayKey);
 }
 
-/** Close the overlay and return to the original tile */
 function closeProject() {
   if (!activeOverlay) return;
   const overlay = activeOverlay;
@@ -402,18 +361,117 @@ function handleOverlayKey(event) {
   if (event.key === 'Escape') closeProject();
 }
 
-/** Fill the projects grid from the PROJECTS array */
+function createPlaceholderTile() {
+  return createElement('article', { className: 'project-tile project-tile--empty', attrs: { 'data-reveal': '' } }, [
+    createIcon('sparkle'),
+    createElement('p', { className: 'project-tile__empty-title', text: 'More projects coming soon' }),
+    createElement('p', { className: 'project-tile__empty-text', text: 'New work will be added here.' })
+  ]);
+}
+
+function createCarousel(tiles) {
+  const wrapper = createElement('div', {
+    className: 'carousel',
+    attrs: { 'data-reveal': '', role: 'region', 'aria-roledescription': 'carousel', 'aria-label': 'Featured projects' }
+  });
+  const stage = createElement('div', { className: 'carousel__stage' });
+  const track = createElement('div', { className: 'carousel__track' }, tiles);
+
+  const makeButton = (direction, label) =>
+    createElement(
+      'button',
+      { className: `carousel__btn carousel__btn--${direction}`, attrs: { type: 'button', 'aria-label': label } },
+      [createIcon('arrow')]
+    );
+  const prev = makeButton('prev', 'Previous project');
+  const next = makeButton('next', 'Next project');
+
+  const dots = createElement(
+    'div',
+    { className: 'carousel__dots' },
+    tiles.map((tile, i) =>
+      createElement('button', {
+        className: 'carousel__dot',
+        attrs: { type: 'button', 'aria-label': `Show ${PROJECTS[i] ? PROJECTS[i].title : `project ${i + 1}`}` }
+      })
+    )
+  );
+  const dotButtons = [...dots.children];
+
+  let current = 0;
+
+  const setActive = (index) => {
+    current = index;
+    tiles.forEach((tile, i) => tile.classList.toggle('is-active', i === index));
+    dotButtons.forEach((dot, i) => dot.setAttribute('aria-current', String(i === index)));
+  };
+
+  const goTo = (index, instant = false) => {
+    const target = tiles[Math.max(0, Math.min(tiles.length - 1, index))];
+    const left = target.offsetLeft - (track.clientWidth - target.offsetWidth) / 2;
+    track.scrollTo({ left, behavior: instant || prefersReducedMotion ? 'auto' : 'smooth' });
+  };
+
+  let frame = null;
+  const update = () => {
+    frame = null;
+    const center = track.scrollLeft + track.clientWidth / 2;
+    let closest = 0;
+    let smallest = Infinity;
+    tiles.forEach((tile, i) => {
+      const distance = Math.abs(tile.offsetLeft + tile.offsetWidth / 2 - center);
+      if (distance < smallest) { smallest = distance; closest = i; }
+    });
+    setActive(closest);
+  };
+  track.addEventListener('scroll', () => { if (frame === null) frame = requestAnimationFrame(update); }, { passive: true });
+
+  track.addEventListener('click', (event) => {
+    const tile = event.target.closest('.project-tile');
+    if (!tile || tile.classList.contains('is-active')) return;
+    event.stopPropagation();
+    goTo(tiles.indexOf(tile));
+  }, true);
+  track.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    const tile = event.target.closest('.project-tile');
+    if (!tile || tile.classList.contains('is-active')) return;
+    event.stopPropagation();
+    event.preventDefault();
+    goTo(tiles.indexOf(tile));
+  }, true);
+
+  const step = (delta) => goTo((current + delta + tiles.length) % tiles.length);
+
+  prev.addEventListener('click', () => step(-1));
+  next.addEventListener('click', () => step(1));
+  dotButtons.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+  wrapper.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowLeft') { event.preventDefault(); step(-1); }
+    else if (event.key === 'ArrowRight') { event.preventDefault(); step(1); }
+  });
+
+  window.addEventListener('resize', () => goTo(current, true));
+
+  stage.append(track, prev, next);
+  wrapper.append(stage, dots);
+  setActive(0);
+  return wrapper;
+}
+
 function renderProjects() {
   const grid = document.getElementById('projects-grid');
   if (!grid) return;
-  grid.replaceChildren(...PROJECTS.map(createProjectTile));
+
+  const tiles = PROJECTS.map(createProjectTile);
+  if (tiles.length === 0) return;
+
+  tiles.forEach((tile) => tile.removeAttribute('data-reveal'));
+
+  grid.replaceChildren(createCarousel(tiles));
 }
 
-/* ==========================================================================
-   5. NAVIGATION
-   ========================================================================== */
-
-/** Mobile menu: open/close with the hamburger, Escape key, outside click, or link click */
 function initMobileMenu() {
   const toggle = document.getElementById('nav-toggle');
   const menu = document.getElementById('nav-menu');
@@ -438,17 +496,15 @@ function initMobileMenu() {
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
       setOpen(false);
-      toggle.focus(); // return focus so keyboard users don't lose their place
+      toggle.focus(); 
     }
   });
 
-  // If the window grows to desktop size, make sure the mobile state is reset
   window.matchMedia('(min-width: 901px)').addEventListener('change', (event) => {
     if (event.matches) setOpen(false);
   });
 }
 
-/** Add a darker background to the navbar after the page has been scrolled a little */
 function initHeaderScrollState() {
   const header = document.getElementById('site-header');
   if (!header) return;
@@ -457,20 +513,16 @@ function initHeaderScrollState() {
   window.addEventListener('scroll', update, { passive: true });
 }
 
-/** Blur + "Coming soon" label: active only while the Internship section is on screen */
 function initComingSoon() {
   const section = document.getElementById('internship');
   const overlay = section && section.querySelector('.coming-soon');
   if (!overlay) return;
 
-  // Without IntersectionObserver support, just keep it on
   if (!('IntersectionObserver' in window)) {
     overlay.classList.add('is-active');
     return;
   }
 
-  // Active once the section reaches the middle band of the screen; off again when it leaves,
-  // so the label animates in again every time you come back
   const observer = new IntersectionObserver(
     ([entry]) => overlay.classList.toggle('is-active', entry.isIntersecting),
     { rootMargin: '-25% 0px -25% 0px' }
@@ -478,7 +530,6 @@ function initComingSoon() {
   observer.observe(section);
 }
 
-/** Internship tabs: click, or use Left/Right/Home/End keys, to switch panels */
 function initTabs() {
   const tablist = document.querySelector('.tabs[role="tablist"]');
   if (!tablist) return;
@@ -491,7 +542,7 @@ function initTabs() {
       const isSelected = tab === selected;
       tab.classList.toggle('is-active', isSelected);
       tab.setAttribute('aria-selected', String(isSelected));
-      tab.tabIndex = isSelected ? 0 : -1; // only the active tab is in the Tab-key order
+      tab.tabIndex = isSelected ? 0 : -1; 
       if (panels[i]) panels[i].hidden = !isSelected;
     });
     if (moveFocus) selected.focus();
@@ -512,11 +563,9 @@ function initTabs() {
     });
   });
 
-  // Make sure the starting state matches the active tab
   select(tabs.find((tab) => tab.classList.contains('is-active')) || tabs[0]);
 }
 
-/** Highlight the nav link of the section currently in view */
 function initActiveNav() {
   const links = [...document.querySelectorAll('.nav__link')];
   const linkById = new Map(links.map((link) => [link.getAttribute('href').slice(1), link]));
@@ -533,7 +582,6 @@ function initActiveNav() {
   setActive('home');
   if (!('IntersectionObserver' in window)) return;
 
-  // Only a thin band in the middle of the screen counts as "in view"
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -545,14 +593,9 @@ function initActiveNav() {
   document.querySelectorAll('main section[id]').forEach((section) => observer.observe(section));
 }
 
-/* ==========================================================================
-   6. SCROLL-REVEAL ANIMATIONS
-   Elements with data-reveal fade in once when they enter the screen.
-   ========================================================================== */
 function initScrollReveal() {
   const targets = document.querySelectorAll('[data-reveal]');
 
-  // No animation for reduced-motion users or very old browsers: just show everything
   if (prefersReducedMotion || !('IntersectionObserver' in window)) {
     targets.forEach((target) => target.classList.add('is-visible'));
     return;
@@ -566,7 +609,6 @@ function initScrollReveal() {
         const delay = Number(el.dataset.revealDelay) || 0;
         if (delay) {
           el.style.transitionDelay = `${delay}ms`;
-          // Remove the delay afterwards so hover effects stay snappy
           setTimeout(() => { el.style.transitionDelay = ''; }, delay + 700);
         }
         el.classList.add('is-visible');
@@ -578,10 +620,6 @@ function initScrollReveal() {
   targets.forEach((target) => observer.observe(target));
 }
 
-/* ==========================================================================
-   7. CONTACT FORM (validation + Formspree)
-   The form's endpoint lives in index.html (the form's action attribute).
-   ========================================================================== */
 const FORM_ERRORS = {
   name: { missing: 'Please enter your name.' },
   email: {
@@ -594,7 +632,6 @@ const FORM_ERRORS = {
   }
 };
 
-/** Returns an error message for a field, or '' if the field is valid */
 function getFieldError(field) {
   const messages = FORM_ERRORS[field.name];
   if (!messages) return '';
@@ -606,7 +643,6 @@ function getFieldError(field) {
   return '';
 }
 
-/** Show or clear a field's error message */
 function setFieldError(field, message) {
   const output = document.getElementById(`${field.id}-error`);
   if (output) output.textContent = message;
@@ -627,7 +663,6 @@ function initContactForm() {
     status.className = `form__status${type ? ` is-${type}` : ''}`;
   };
 
-  // Validate when leaving a field; clear its error as soon as the person starts fixing it
   fields.forEach((field) => {
     field.addEventListener('blur', () => setFieldError(field, getFieldError(field)));
     field.addEventListener('input', () => {
@@ -639,7 +674,6 @@ function initContactForm() {
     event.preventDefault();
     setStatus('');
 
-    // 1) Validate every field and focus the first problem
     let firstInvalid = null;
     fields.forEach((field) => {
       const error = getFieldError(field);
@@ -651,13 +685,11 @@ function initContactForm() {
       return;
     }
 
-    // 2) Friendly reminder if the Formspree URL has not been replaced yet
     if (form.action.includes('YOUR_FORM_ID')) {
       setStatus('The contact form is not connected yet. Please email me directly instead.', 'error');
       return;
     }
 
-    // 3) Send to Formspree
     const originalLabel = submitButton.innerHTML;
     submitButton.disabled = true;
     submitButton.textContent = 'Sending…';
@@ -687,20 +719,13 @@ function initContactForm() {
   });
 }
 
-/* ==========================================================================
-   8. FOOTER YEAR
-   ========================================================================== */
 function setFooterYear() {
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 }
 
-/* ==========================================================================
-   9. START EVERYTHING
-   (this script is loaded with "defer", so the page is ready when it runs)
-   ========================================================================== */
 function init() {
-  renderProjects();      // must run before the reveal observer so the cards get animated too
+  renderProjects();      
   initMobileMenu();
   initHeaderScrollState();
   initActiveNav();
